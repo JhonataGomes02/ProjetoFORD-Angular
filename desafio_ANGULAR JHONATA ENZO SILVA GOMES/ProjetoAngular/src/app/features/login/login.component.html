@@ -1,0 +1,43 @@
+<div class="container-fluid vh-100">
+  <div class="row align-items-center h-100">
+    
+    <div class="col-md-7 text-center">
+      <img src="assets/ranger.png" alt="Ford Ranger" class="img-fluid" style="max-height: 50vh;">
+    </div>
+
+    <div class="col-md-4">
+      <div class="text-center mb-4">
+        <img src="assets/ford.png" alt="Ford Logo" style="max-width: 150px;">
+      </div>
+
+      <h3 class="mb-3">Boas-vindas</h3>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Digite seu usuário" 
+            formControlName="nome">
+        </div>
+        <div class="mb-3">
+          <input 
+            type="password" 
+            class="form-control" 
+            placeholder="Digite sua senha" 
+            formControlName="senha">
+        </div>
+
+        <div *ngIf="loginError" class="alert alert-danger">
+          {{ loginError }}
+        </div>
+        
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

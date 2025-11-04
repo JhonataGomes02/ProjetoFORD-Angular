@@ -1,0 +1,8 @@
+/* Centraliza a coluna da imagem em telas maiores */
+@media (min-width: 768px) {
+  .col-md-7 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
