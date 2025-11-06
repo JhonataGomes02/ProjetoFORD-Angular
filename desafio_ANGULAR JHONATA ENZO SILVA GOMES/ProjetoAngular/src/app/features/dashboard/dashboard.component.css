@@ -1,38 +1,84 @@
-.card-text {
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: #003478; /* Azul Ford */
+/* --- 1. FUNDO (O mesmo do Login/Home) --- */
+/* :host usa 'encapsulation', mas vamos usar uma classe para garantir */
+.dashboard-dark-container {
+  position: relative;
+  min-height: 100vh; /* Garante que cubra a tela toda */
+  width: 100%;
+  background-image: url('https://di-uploads-pod41.dealerinspire.com/riverviewford2/uploads/2016/01/2017-Ford-Raptor-3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efeito parallax */
+  padding-bottom: 3rem; /* Espaço no fim da página */
 }
 
-/* Layout do Header */
+/* Overlay escuro */
+.dashboard-dark-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+/* Todo o conteúdo fica acima do overlay */
+.container-fluid {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- 2. HEADER (Adaptado para o fundo escuro) --- */
 .dashboard-header {
+  position: relative; 
   display: flex;
-  justify-content: space-between;
+  justify-content: center; 
   align-items: center;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #dee2e6;
+  padding: 0.75rem 0;
+  /* Remove o fundo azul, usa o blur */
+  background-color: rgba(0, 0, 0, 0.2); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-left: -1rem; /* Compensa o padding do container */
+  margin-right: -1rem;
+  margin-top: -1rem;
+  padding: 1rem;
   margin-bottom: 1.5rem;
 }
 
-/* Botão de Perfil */
+/* Título H2 agora é branco */
+.dashboard-header h2 {
+  width: 100%;
+  color: white; 
+  font-weight: 500;
+}
+
+/* Dropdown de Perfil (adaptado para fundo escuro) */
+.profile-dropdown {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem; 
+  transform: translateY(-50%);
+  display: inline-block;
+}
+
 .profile-btn {
-  background-color: #f8f9fa; /* bg-light */
-  border: 1px solid #dee2e6;
+  /* Botão "fantasma" (claro) para o fundo escuro */
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white; 
   border-radius: 0.375rem;
   padding: 0.375rem 0.75rem;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Espaço entre o ícone e o texto */
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+.profile-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* O Dropdown */
-.profile-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Conteúdo do Dropdown (escondido por padrão) */
+/* Dropdown Content (fundo branco) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -40,29 +86,80 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 100;
-  right: 0; /* Alinha à direita */
+  right: 0;
   border-radius: 0.375rem;
 }
+.dropdown-content a { color: black; padding: 12px 16px; text-decoration: none; display: block; }
+.dropdown-content a:hover { background-color: #f1f1f1; }
+.profile-dropdown:hover .dropdown-content { display: block; }
 
-/* Links dentro do Dropdown */
-.dropdown-content a {
+/* --- 3. ESTILOS "GLASS" GERAIS --- */
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Inputs de Formulário Estilo "Glass" */
+.form-control-glass {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1rem;
+}
+.form-control-glass::placeholder { color: rgba(255, 255, 255, 0.5); }
+.form-control-glass:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border-color: var(--ford-blue, #003478);
+  box-shadow: 0 0 0 0.25rem rgba(0, 52, 120, 0.5); 
+}
+/* Corrigir o dropdown do <select> */
+.form-control-glass option {
+  background-color: white;
   color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
 }
 
-/* Efeito hover nos links */
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
+/* Alertas de Vidro */
+.alert-danger-glass {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  background-color: rgba(220, 53, 69, 0.1); 
+  border: 1px solid rgba(220, 53, 69, 0.5);
+  color: #f8d7da;
+  border-radius: 0.375rem;
+}
+.alert-info-glass {
+  background-color: rgba(13, 202, 240, 0.1);
+  border: 1px solid rgba(13, 202, 240, 0.5);
+  color: #cff4fc;
 }
 
-/* Magia: Mostrar o dropdown quando passar o mouse */
-.profile-dropdown:hover .dropdown-content {
-  display: block;
+/* --- 4. CARDS DE ESTATÍSTICA (Layout com ícone) --- */
+.card-stat .stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* Ícone usa o azul Ford */
+  background-color: var(--ford-blue-light, #e6f0ff);
+  color: var(--ford-blue, #003478);
+  font-size: 1.75rem;
+  flex-shrink: 0;
 }
-
-/* Efeito hover no botão */
-.profile-dropdown:hover .profile-btn {
-  background-color: #e9ecef;
+.card-stat .card-text {
+  font-size: 2.25rem;
+  font-weight: 500;
+  color: #ffffff; /* Números em branco */
+  line-height: 1;
 }

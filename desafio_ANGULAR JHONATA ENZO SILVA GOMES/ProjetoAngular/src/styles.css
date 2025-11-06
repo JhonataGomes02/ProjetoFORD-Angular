@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --ford-blue: #003478;
+}
+
+.ford-blue-text {
+  color: var(--ford-blue);
+}
+
+/* Opcional: Garante que a classe de centralização do Bootstrap funcione */
+.text-center {
+  text-align: center;
+}

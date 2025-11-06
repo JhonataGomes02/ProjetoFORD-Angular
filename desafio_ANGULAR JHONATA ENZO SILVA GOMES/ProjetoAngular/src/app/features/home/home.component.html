@@ -1,34 +1,52 @@
-<div class="home-container">
-  
-  <nav class="navbar navbar-light bg-light shadow-sm">
-    <div class="container-fluid">
+<div class="home-dark-container">
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top blurry-nav">
+    <div class="container">
       <a class="navbar-brand" href="#">
-        <img src="/assets/ford.png" alt="Ford Logo" height="30">
+        <img src="/assets/ford.png" alt="Ford Logo">
       </a>
-      <button class="btn btn-outline-secondary" (click)="logout()">
-        Logout
-      </button>
+      <div class="navbar-text" *ngIf="user">
+        <span class="text-white me-3">Olá, {{ user.nome }}</span>
+        <button class="btn btn-outline-light btn-sm" (click)="logout()">
+          Logout
+        </button>
+      </div>
     </div>
   </nav>
 
-  <div class="container text-center mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Boas-vindas ao Sistema de Gestão FORD</h5>
-            <p class="card-text">
-              Acesse o dashboard para visualizar os dados estratégicos dos veículos.
-            </p>
-            
-            <a routerLink="/dashboard" class="btn btn-primary">
-              Acessar Dashboard
-            </a>
+  <div class="container d-flex flex-column justify-content-center align-items-center vh-100 text-center text-white hero-content">
+    <h1 class="display-1 fw-bold">FORD DASHBOARD</h1>
+    <p class="lead text-white-50 col-md-8">
+      Acesse o dashboard para visualizar dados em tempo real dos veículos Ford, incluindo vendas, conectividade e atualizações de software.
+    </p>
+    <a routerLink="/dashboard" class="btn btn-primary btn-lg fw-semibold mt-3">
+      Acessar Dashboard <i class="bi bi-arrow-right ms-2"></i>
+    </a>
+  </div>
+
+  <div class="stats-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="stat-card">
+            <h3 class="stat-blue-text">4</h3>
+            <p>Modelos de Veículos</p>
           </div>
         </div>
-
+        <div class="col-md-4">
+          <div class="stat-card">
+            <h3 class="stat-blue-text">Real-time</h3>
+            <p>Dados Ao Vivo</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="stat-card">
+            <h3 class="stat-blue-text">6+</h3>
+            <p>VINs Ativos</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
 </div>

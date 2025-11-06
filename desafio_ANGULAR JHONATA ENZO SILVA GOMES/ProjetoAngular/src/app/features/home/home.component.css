@@ -1,28 +1,90 @@
-/* Passo 6: Imagem de fundo */
-.home-container {
-  /* Usando a imagem da Ranger como fundo (deve estar em src/assets) */
-  background-image: url('/assets/ranger.jpg'); 
+.home-dark-container {
+  position: relative;
+  /* Imagem de fundo do seu screenshot */
+  background-image: url('https://images.unsplash.com/photo-1641437638621-1de977395a9c');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: 100vw;
+  background-attachment: fixed; /* Efeito parallax */
 }
 
-/* Adiciona um overlay escuro para legibilidade */
-.home-container::before {
+/* Overlay escuro (como no screenshot) */
+.home-dark-container::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Mais escuro */
   z-index: 1;
 }
 
-/* Garante que o conteúdo fique acima do overlay */
-nav, .container {
+/* Coloca o conteúdo acima do overlay */
+.navbar, .hero-content, .stats-footer {
   position: relative;
   z-index: 2;
+}
+
+/* Navbar com Efeito "Blur" */
+.blurry-nav {
+  background-color: rgba(0, 0, 0, 0.2); /* Fundo escuro translúcido */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* O logo /assets/ford.png é escuro, então o invertemos para ficar branco */
+.navbar-brand img {
+  height: 50px; /* Tamanho padrão do logo */
+}
+
+/* A Seção Hero ocupa a primeira "dobra" da tela */
+.hero-content {
+  height: 100vh; /* Altura total da tela */
+  padding-top: 56px; /* Para não ficar atrás da navbar */
+}
+
+/* O Botão Principal (azul, como no screenshot) */
+.btn-primary {
+  /* O --ford-blue vem do styles.css, garantindo a cor da marca */
+  background-color: var(--ford-blue, #003478);
+  border-color: var(--ford-blue, #003478);
+  padding: 0.75rem 1.5rem;
+}
+
+/* Rodapé com Estatísticas */
+.stats-footer {
+  width: 100%;
+  padding: 4rem 0;
+  background-color: rgba(0,0,0,0.3); /* Fundo levemente mais escuro */
+}
+
+/* Os cards de estatística */
+.stat-card {
+  background-color: rgba(255, 255, 255, 0.05); /* Card "glassmorphism" */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: white;
+  backdrop-filter: blur(5px);
+  transition: all 0.2s ease-in-out;
+}
+
+.stat-card:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-card h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.stat-card p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* A cor azul dos números (do screenshot) */
+.stat-blue-text {
+  color: #3b82f6;
 }

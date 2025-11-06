@@ -1,43 +1,43 @@
-<div class="container-fluid vh-100">
-  <div class="row align-items-center h-100">
+<div class="login-dark-container">
+
+  <div class="login-card">
     
-    <div class="col-md-7 text-center">
-      <img src="assets/ranger.png" alt="Ford Ranger" class="img-fluid" style="max-height: 50vh;">
+    <div class="text-center mb-4">
+      <img src="/assets/ford.png" alt="Ford Logo" class="logo-white">
     </div>
 
-    <div class="col-md-4">
-      <div class="text-center mb-4">
-        <img src="assets/ford.png" alt="Ford Logo" style="max-width: 150px;">
-      </div>
+    <h3 class="text-white text-center mb-4">Bem-vindo</h3>
 
-      <h3 class="mb-3">Boas-vindas</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <input 
-            type="text" 
-            class="form-control" 
-            placeholder="Digite seu usuário" 
-            formControlName="nome">
-        </div>
-        <div class="mb-3">
-          <input 
-            type="password" 
-            class="form-control" 
-            placeholder="Digite sua senha" 
-            formControlName="senha">
-        </div>
-
-        <div *ngIf="loginError" class="alert alert-danger">
-          {{ loginError }}
-        </div>
-        
-        <div class="d-grid">
-          <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
-            Login
-          </button>
-        </div>
-      </form>
-    </div>
+      <div class="mb-3">
+        <input 
+          type="text" 
+          class="form-control form-control-glass" 
+          placeholder="Usuário (admin)" 
+          formControlName="nome">
+      </div>
+      
+      <div class="mb-3">
+        <input 
+          type="password" 
+          class="form-control form-control-glass" 
+          placeholder="Senha (123456)" 
+          formControlName="senha">
+      </div>
+      
+      <div *ngIf="loginError" class="alert alert-danger-glass">
+        {{ loginError }}
+      </div>
+      
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary btn-lg fw-semibold" [disabled]="isLoading">
+          <span *ngIf="!isLoading">Login</span>
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span *ngIf="isLoading" class="ms-2">Entrando...</span>
+        </button>
+      </div>
+    </form>
   </div>
+  
 </div>

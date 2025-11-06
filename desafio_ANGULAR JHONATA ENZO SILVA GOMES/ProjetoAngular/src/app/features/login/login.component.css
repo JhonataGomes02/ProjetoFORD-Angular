@@ -1,8 +1,84 @@
-/* Centraliza a coluna da imagem em telas maiores */
-@media (min-width: 768px) {
-  .col-md-7 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+/* Fundo escuro (mesmo da Home) */
+.login-dark-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('https://wallpapercat.com/w/full/3/6/e/175932-3840x2160-desktop-4k-ford-wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  /* Centraliza o card */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Overlay escuro (mesmo da Home) */
+.login-dark-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+/* O "Card de Vidro" (mesmo da Home) */
+.login-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 2.5rem;
+  color: white;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Logo Branco (mesmo da Home) */
+.logo-white {
+  height: 40px; /* Um pouco maior no login */
+}
+
+/* Inputs de Formulário Estilo "Glass" */
+.form-control-glass {
+  background-color: rgba(0, 0, 0, 0.2); /* Fundo escuro transparente */
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1rem;
+}
+
+/* Texto do placeholder */
+.form-control-glass::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Foco do input */
+.form-control-glass:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border-color: var(--ford-blue, #003478);
+  box-shadow: 0 0 0 0.25rem rgba(0, 52, 120, 0.5); /* Sombra Azul Ford */
+}
+
+/* Botão de Login (Azul Ford) */
+.btn-primary {
+  background-color: var(--ford-blue, #003478);
+  border-color: var(--ford-blue, #003478);
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+/* Alerta de Erro Estilo "Glass" */
+.alert-danger-glass {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  background-color: rgba(220, 53, 69, 0.1); /* Vermelho Glass */
+  border: 1px solid rgba(220, 53, 69, 0.5);
+  color: #f8d7da; /* Texto vermelho claro */
+  border-radius: 0.375rem;
 }
